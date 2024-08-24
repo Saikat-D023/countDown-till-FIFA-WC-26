@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CountDown</title>
+    <style>
+        .countdown-container
+        {
+           position: absolute;
+           top: 50%;
+           left: 50%;
+           transform: translate(-50%,-50%);
+        }
+        #countdown
+        {
+            margin-bottom: 20px;
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="countdown-container">
+        <div class="countdown-timer" id="countdown"></div>
+        <div class="countdown-label">
+            Until FIFA WORLD CUP 2026
+        </div>
+    </div>
+
+    <script>
+        const targetDate = new Date('2026-06-17T00:00:00')
+
+        function updateCountDown(){
+            const currentDate = new Date();
+
+            const timeDifference = targetDate - currentDate;
+
+            const days = Math.floor(timeDifference/(1000*60*60*24));
+
+            document.getElementById("countdown").innerHTML = `${days} Days`
+
+            setTimeout(updateCountDown,1000)
+        }
+        updateCountDown();
+    </script>
+</body>
+</html>
